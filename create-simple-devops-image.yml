@@ -1,6 +1,6 @@
 ---
 - hosts: all
-  become: yes # make sure you login to docker hub: docker login (normal ansadmin account) and sudo docker login (root)
+  become: yes # make sure you login to docker hub: docker login (normal namma14 account) and sudo docker login (root)
   gather_facts: no
 
   tasks:
@@ -11,11 +11,11 @@
         chdir: /opt/docker
 
     - name: create tag to image
-      command: docker tag simple-devops-image ameintu/simple-devops-image
+      command: docker tag simple-devops-image namma/simple-devops-image
 
     - name: push image on to dockerhub
-      command: docker push ameintu/simple-devops-image
+      command: docker push namma/simple-devops-image
 
     - name: remove docker images from ansible server
-      command: docker rmi tomcat simple-devops-image:latest ameintu/simple-devops-image
+      command: docker rmi tomcat simple-devops-image:latest namma/simple-devops-image
       ignore_errors: yes
